@@ -1,0 +1,5 @@
+exclude:
+  - 'app/views/devise/**/*.slim'
+linters:
+  LineLength:
+    enabled: false
