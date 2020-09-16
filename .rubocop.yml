@@ -57,14 +57,6 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 120
 
-# Blockの長さ 自動生成ファイルとspec除外
-Metrics/BlockLength:
-  Exclude:
-    - "spec/**/*"
-    - "lib/tasks/auto_annotate_models.rake"
-    - "Guardfile"
-    - "config/routes.rb"
-
 # GemのOrderしない
 Bundler/OrderedGems:
   Enabled: false
@@ -84,6 +76,12 @@ Layout/LineLength:
     - "db/migrate/**/*" # migrateファイルは除外
 
 # 自動生成ファイル除外
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "lib/tasks/auto_annotate_models.rake"
+    - "Guardfile"
+    - "config/routes.rb"
 Style/BlockComments:
   Exclude:
     - "spec/spec_helper.rb"
@@ -91,5 +89,8 @@ Style/MixinUsage:
   Exclude:
     - "bin/**"
 Layout/HashAlignment:
+  Exclude:
+    - "lib/tasks/auto_annotate_models.rake"
+Rails/RakeEnvironment:
   Exclude:
     - "lib/tasks/auto_annotate_models.rake"
