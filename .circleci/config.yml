@@ -75,7 +75,18 @@ jobs:
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - store_test_results:
           path: /tmp/test-results
+
       - run:
           name: Run Lint
           when: always
           command: bundle exec rubocop
+
+      - run:
+          name: Slim Lint
+          when: always
+          command: bundle exec slim-lint app/views/
+
+      - run:
+          name: Scss Lint
+          when: always
+          command: bundle exec scss-lint app/assets/stylesheets/
