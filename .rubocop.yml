@@ -52,6 +52,8 @@ Metrics/AbcSize:
 # 1メソッドの長さ
 Metrics/MethodLength:
   Max: 20
+  Exclude:
+    - "db/migrate/**/*" # migrateファイルは除外
 
 # Classの長さ
 Metrics/ClassLength:
