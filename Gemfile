@@ -19,6 +19,10 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 
+# Markdown, syntax
+gem 'redcarpet'
+gem 'rouge'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'bullet'
