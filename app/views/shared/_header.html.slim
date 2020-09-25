@@ -7,6 +7,7 @@ header
     .collapse.navbar-collapse#navbarNavAltMarkup
       .navbar-nav
         - if user_signed_in?
+          = link_to '投稿一覧', posts_path, class: 'nav-item nav-link'
           = link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-item nav-link'
           = link_to 'ログアウト', destroy_user_session_path, class: 'nav-item nav-link'
         - else
