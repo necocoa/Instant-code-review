@@ -32,8 +32,8 @@ RSpec.describe 'Users', type: :system do
       it 'ログアウトできる' do
         visit root_path
         click_link 'nav_logout'
-        expect(page).to have_selector('#nav_login')
-        expect(page).to_not have_selector('#nav_logout')
+        expect(page).to have_selector '#nav_login'
+        expect(page).to_not have_selector '#nav_logout'
       end
     end
 

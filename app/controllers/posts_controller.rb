@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.all
+    # TODO: pagenation
+    @posts = Post.all.includes(:user)
   end
 
   def show
