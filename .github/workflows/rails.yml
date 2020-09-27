@@ -36,3 +36,9 @@ jobs:
         run: bin/rails db:schema:load --trace
       - name: Run rspec
         run: bundle exec rspec
+      - name: Run rubocop
+        run: bundle exec rubocop
+      - name: Run slim lint
+        run: bundle exec slim-lint app/views/
+      - name: Run scss lint
+        run: bundle exec scss-lint app/assets/stylesheets/
