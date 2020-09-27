@@ -44,9 +44,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - name: RuboCop Linter
+      - name: RuboCop Linter Action
         uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        with:
-          action_config_path: ".github/config/rubocop_linter_action.yml"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
