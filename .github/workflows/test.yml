@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   rspec:
@@ -25,7 +25,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -39,8 +38,7 @@ jobs:
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          restore-keys: ${{ runner.os }}-yarn-
       - name: Yarn install
         run: yarn install --pure-lockfile
 
