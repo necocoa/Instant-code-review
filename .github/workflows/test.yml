@@ -1,6 +1,6 @@
-name: Rails
+name: Tests
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -8,8 +8,8 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_HOST: 127.0.0.1
-      DATABASE_USER: circleci
-      DATABASE_PASSWORD: password
+      DATABASE_USER: ci_user
+      DATABASE_PASSWORD: ci_password
       TZ: Asia/Tokyo
     services:
       db:
@@ -22,8 +22,8 @@ jobs:
           --health-retries 5
         env:
           POSTGRES_DB: instant_code_review_test
-          POSTGRES_USER: circleci
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
 
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +36,3 @@ jobs:
         run: bin/rails db:schema:load --trace
       - name: Run rspec
         run: bundle exec rspec
-      - name: Run slim lint
-        run: bundle exec slim-lint app/views/
-      - name: Run scss lint
-        run: bundle exec scss-lint app/assets/stylesheets/
