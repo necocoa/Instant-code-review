@@ -8,7 +8,6 @@ on:
 
 jobs:
   rspec:
-
     runs-on: ubuntu-latest
 
     env:
@@ -19,14 +18,10 @@ jobs:
       postgres:
         image: postgres:12.4
         ports: ["5432:5432"]
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -50,7 +45,7 @@ jobs:
         run: yarn install --pure-lockfile
 
       - name: Set up database
-        run: bin/rails db:create db:schema:load --trace
+        run: bin/rails db:setup
 
       - name: Run rspec
         run: bundle exec rspec
