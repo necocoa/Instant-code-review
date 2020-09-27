@@ -43,7 +43,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install node_modules
         run: yarn install --check-files
-      - run: yarn cache dir
       - name: Set up database
         run: bin/rails db:schema:load --trace
       - name: Run rspec
