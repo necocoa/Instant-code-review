@@ -5,7 +5,14 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      RAILS_ENV: test
+      BUNDLE_JOBS: "4"
+      BUNDLE_RETRY: "3"
+      DATABASE_HOST: 127.0.0.1
+      DATABASE_USER: circleci
+      DATABASE_PASSWORD: password
+      TZ: Asia/Tokyo
     services:
       db:
         image: postgres:11
@@ -26,14 +33,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-        env:
-          RAILS_ENV: test
-          BUNDLE_JOBS: "4"
-          BUNDLE_RETRY: "3"
-          DATABASE_HOST: 127.0.0.1
-          DATABASE_USER: circleci
-          DATABASE_PASSWORD: password
-          TZ: Asia/Tokyo
       - run: yarn install
       - name: Set up database
         run: bin/rails db:schema:load --trace
