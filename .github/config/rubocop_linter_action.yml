@@ -1,7 +1,0 @@
-versions:
-  - rubocop
-  - rubocop-rails
-  - rubocop-rspec
-  - rubocop-performance
-  - scss_lint
-  - slim_lint
