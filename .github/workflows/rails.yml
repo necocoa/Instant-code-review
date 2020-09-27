@@ -34,6 +34,7 @@ jobs:
           DATABASE_USER: circleci
           DATABASE_PASSWORD: password
           TZ: Asia/Tokyo
+      - run: yarn install
       - name: Set up database
         run: bin/rails db:schema:load --trace
       - name: Run rspec
