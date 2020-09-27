@@ -64,7 +64,7 @@ jobs:
         uses: reviewdog/action-setup@v1
 
       - name: Run rubocop
-        run: bundle exec rubocop -P | reviewdog -reporter=github-pr-review -f=rubocop
+        run: bundle exec rubocop -P | reviewdog -reporter=github-pr-check -f=rubocop -level="error"
 
       - name: Run slim lint
         if: always()
