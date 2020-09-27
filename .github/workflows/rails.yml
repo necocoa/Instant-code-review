@@ -76,4 +76,4 @@ jobs:
 
       - name: Run brakeman
         if: always()
-        run: bundle exec brakeman --rails6 -A --confidence-level 1
+        run: bundle exec brakeman -A --confidence-level 1
