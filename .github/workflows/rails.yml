@@ -61,9 +61,7 @@ jobs:
           bundler-cache: true
 
       - name: Set up reviewdog
-        run: |
-          mkdir -p $HOME/bin && curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin
-          echo ::add-path::$HOME/bin
+        uses: reviewdog/action-setup@v1
 
       - name: Run rubocop
         run: bundle exec rubocop -P | reviewdog -reporter=github-pr-review -f=rubocop
