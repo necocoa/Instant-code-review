@@ -29,15 +29,16 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'annotate'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-performance', require: false
   gem 'scss_lint', require: false
   gem 'slim_lint', require: false
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'annotate'
+  gem 'guard', require: false
+  gem 'guard-rspec', require: false
+  gem 'brakeman', require: false
 end
 
 group :test do
@@ -45,7 +46,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'rspec-rails'
-  gem 'rspec_junit_formatter'
   gem 'factory_bot_rails'
 end
 

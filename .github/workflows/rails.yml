@@ -73,3 +73,7 @@ jobs:
       - name: Run scss lint
         if: always()
         run: bundle exec scss-lint app/assets/stylesheets/
+
+      - name: Run brakeman
+        if: always()
+        run: bundle exec brakeman -A --confidence-level 1
