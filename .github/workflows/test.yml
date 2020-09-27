@@ -16,10 +16,14 @@ jobs:
       TZ: Asia/Tokyo
 
     services:
-      db:
+      postgres:
         image: postgres:12.4
         ports: ["5432:5432"]
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
@@ -37,7 +41,6 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: Get yarn cache
         uses: actions/cache@v2
-        id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
