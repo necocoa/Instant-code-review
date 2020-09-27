@@ -12,6 +12,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run slim lint
+        if: always()
         run: slim-lint app/views/
       - name: Run scss lint
+        if: always()
         run: scss-lint app/assets/stylesheets/
