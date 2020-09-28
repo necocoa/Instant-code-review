@@ -22,6 +22,6 @@ module MarkdownHelper
   def markdown_to_html(md_text)
     html_render = HTMLwithRouge.new(filter_html: true, hard_wrap: true)
     markdown = Redcarpet::Markdown.new(html_render, REDCARPET_OPTIONS)
-    markdown.render(md_text).html_safe
+    markdown.render(md_text).html_safe # rubocop:disable Rails/OutputSafety
   end
 end
