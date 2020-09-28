@@ -64,7 +64,8 @@ RSpec.configure do |config|
 
   # FactoryBotの省略
   config.include FactoryBot::Syntax::Methods
-
+  # Devise sign_inヘルパー
+  config.include Devise::Test::IntegrationHelpers
   # JSを利用しないSystem testの場合、headless cromeを利用する
   config.before(:each) do |example|
     if example.metadata[:type] == :system
