@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :system do
-  def login_as(user)
-    visit root_path
-    click_link 'nav_login'
-    fill_in 'user[email]', with: user.email
-    fill_in 'user[password]', with: user.password
-    click_button :commit
-  end
-
   context '未ログインの時' do
     describe 'index' do
       it '表示される' do
@@ -39,7 +31,8 @@ RSpec.describe 'Posts', type: :system do
     let(:current_user) { create(:user) }
     let(:current_post) { create(:post, user: current_user) }
     before do
-      login_as current_user
+      sign_in current_user
+      visit root_path
     end
     describe 'destroy' do
       it '削除できる' do

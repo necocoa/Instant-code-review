@@ -31,7 +31,7 @@ RSpec.describe 'Users', type: :system do
   context 'ログイン状態' do
     let(:user) { create(:user) }
     before do
-      sign_in(user)
+      sign_in user
       visit root_path
     end
 
