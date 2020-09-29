@@ -1,19 +1,13 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
+  # GET /posts
   def index
     # TODO: pagenation
     @posts = Post.all.includes(:user)
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  def new
-    @post = current_user.posts.new
-  end
-
+  # POST /posts
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
@@ -23,6 +17,17 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/new
+  def new
+    @post = current_user.posts.new
+  end
+
+  # GET /posts/:id/edit
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  # DELETE /posts/:id
   def destroy
     post = current_user.posts.find(params[:id])
     if post.destroy
