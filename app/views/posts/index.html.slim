@@ -1,0 +1,9 @@
+h1 投稿一覧
+
+= link_to '新規投稿', new_post_path, class: 'btn btn-primary'
+
+.posts
+  ul
+    - @posts.each do |post|
+      li.post_title = link_to post.title, post
+      = post.user.name

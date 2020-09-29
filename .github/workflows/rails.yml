@@ -46,12 +46,10 @@ jobs:
         run: bin/rails db:setup
 
       - name: Run rspec
-        run: bundle exec rspec
+        run: bundle exec rspec -p
 
   linters:
     runs-on: ubuntu-latest
-    env:
-      REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -65,6 +63,8 @@ jobs:
 
       - name: Run rubocop
         run: bundle exec rubocop -P | reviewdog -reporter=github-pr-check -f=rubocop -level="error"
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run slim lint
         if: always()
