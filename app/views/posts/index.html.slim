@@ -10,3 +10,7 @@ h1 投稿一覧
           = link_to post.title, post, class: 'h5'
         .d-flex.flex-row-reverse
           small = post.user.name
+
+.
+  = paginate @posts
+  = page_entries_info @posts

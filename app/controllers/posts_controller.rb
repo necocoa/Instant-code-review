@@ -3,8 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    # TODO: pagenation
-    @posts = Post.all.includes(:user)
+    @posts = Post.includes(:user).page(params[:page])
   end
 
   # POST /posts
