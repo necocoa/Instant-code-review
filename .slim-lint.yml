@@ -1,5 +1,6 @@
 exclude:
   - 'app/views/devise/**/*.slim'
+  - 'app/views/kaminari/**/*.slim'
 linters:
   LineLength:
     enabled: false
