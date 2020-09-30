@@ -9,7 +9,10 @@ h1 投稿一覧
         .d-flex.flex-row
           = link_to post.title, post, class: 'h5'
         .d-flex.flex-row-reverse
-          small = post.user.name
+          .px-2
+            small = "#{time_ago_in_words(post.created_at)}前"
+          .px-2
+            small = post.user.name
 
 .
   = paginate @posts
