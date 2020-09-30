@@ -11,7 +11,8 @@
 #
 # Indexes
 #
-#  index_posts_on_user_id  (user_id)
+#  index_posts_on_created_at  (created_at)
+#  index_posts_on_user_id     (user_id)
 #
 # Foreign Keys
 #
@@ -19,6 +20,9 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
+
   validates :title, presence: true, length: { in: 5..100 }
-  validates :body, presence: true, length: { in: 10..3000 }
+  validates :body, presence: true, length: { in: 10..10000 }
+
+  scope :recent, -> { order(created_at: :desc) }
 end
