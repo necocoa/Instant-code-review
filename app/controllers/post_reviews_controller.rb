@@ -1,4 +1,5 @@
 class PostReviewsController < ApplicationController
+  # POST /posts/:post_id/post_reviews
   def create
     @post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.new(post_review_params)
@@ -10,6 +11,7 @@ class PostReviewsController < ApplicationController
     end
   end
 
+  # DELETE /posts/:post_id/post_reviews/:id
   def destroy
     post_revirew = current_user.post_reviews.find(params[:id])
     post_revirew.destroy
