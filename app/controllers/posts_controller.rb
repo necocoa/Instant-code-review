@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = current_user.posts.new(post_params)
+
     if @post.save
       redirect_to @post, notice: '投稿しました。'
     else
@@ -24,11 +25,13 @@ class PostsController < ApplicationController
   # GET /posts/:id/edit
   def show
     @post = Post.find(params[:id])
+    @post_review = current_user.post_reviews.new if user_signed_in?
   end
 
   # DELETE /posts/:id
   def destroy
     post = current_user.posts.find(params[:id])
+
     if post.destroy
       redirect_to posts_path, notice: '投稿を削除しました。'
     else
