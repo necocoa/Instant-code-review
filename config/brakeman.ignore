@@ -3,11 +3,31 @@
     {
       "warning_type": "Unscoped Find",
       "warning_code": 82,
+      "fingerprint": "872e52755f78f69184c14215ab69bde909f70873ea3560241c26d6a2a771b516",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `Post#find`",
+      "file": "app/controllers/post_reviews_controller.rb",
+      "line": 5,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "Post.find(params[:post_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PostReviewsController",
+        "method": "create"
+      },
+      "user_input": "params[:post_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
       "fingerprint": "cf0401e944a24fc5ee134d404f78aee6c8b3f51a3017b00cef14ced26371b6ec",
       "check_name": "UnscopedFind",
       "message": "Unscoped call to `Post#find`",
       "file": "app/controllers/posts_controller.rb",
-      "line": 10,
+      "line": 27,
       "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
       "code": "Post.find(params[:id])",
       "render_path": null,
@@ -21,6 +41,6 @@
       "note": ""
     }
   ],
-  "updated": "2020-09-28 10:54:07 +0900",
+  "updated": "2020-10-01 13:36:14 +0900",
   "brakeman_version": "4.9.1"
 }
