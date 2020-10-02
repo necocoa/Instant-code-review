@@ -20,12 +20,14 @@
         li.list-group-item
           . = markdown_to_html(post_review.body)
           .d-flex.justify-content-end
+            - if post_review.user == current_user
+              .mr-3
+                = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do
+                  i.fas.fa-trash
             .mr-3
               small = "投稿 #{l(post_review.created_at, format: :long)}"
             .
               small = post_review.user.name
-            - if @has_current_post
-              i.fas.fa-trach
 
 - if user_signed_in? && !@has_current_post
   #post_review_form

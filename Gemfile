@@ -15,6 +15,9 @@ gem 'rails-i18n', '~> 6.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'seed-fu'
 
+# Font Awesome
+gem 'font-awesome-sass'
+
 # Devise
 gem 'devise'
 gem 'devise-i18n'
