@@ -1,4 +1,9 @@
 class PostReviewsController < ApplicationController
+  # GET /posts/:post_id/post_reviews
+  def index
+    redirect_to post_path(params[:post_id])
+  end
+
   # POST /posts/:post_id/post_reviews
   def create
     @post = Post.find(params[:post_id])
@@ -7,6 +12,8 @@ class PostReviewsController < ApplicationController
     if @post_review.save
       redirect_to @post
     else
+      @post_reviews = @post.post_reviews.eager_load(:user).order(created_at: :desc)
+      @has_current_post = @post.user == current_user
       render 'posts/show'
     end
   end
