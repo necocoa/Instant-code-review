@@ -3,6 +3,14 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      post: 投稿
+      post_review: コードレビュー
+    attributes:
+      post:
+        title: タイトル
+        body: 投稿内容
+      post_review:
+        body: レビュー内容
   attributes:
     created_at: 作成日
     updated_at: 更新日

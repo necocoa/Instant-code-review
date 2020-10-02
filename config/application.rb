@@ -36,9 +36,6 @@ module InstantCodeReview
       g.test_framework = :rspec
       g.helper_specs = false
       g.view_specs = false
-      g.request_specs = false
-      g.controller_specs = false
-      g.system_specs = true
     end
   end
 end

@@ -23,6 +23,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :post_reviews, dependent: :destroy
 
   validates :name, length: { in: 1..30 }, allow_blank: true
   validates :profile, length: { in: 1..1000 }, allow_blank: true
