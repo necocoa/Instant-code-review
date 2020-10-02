@@ -8,13 +8,14 @@
 @import "font-awesome";
 @import "rouge";
 
-div.highlight {
+$code-bg-color: #f6f8fa;
+
+.highlight {
+  background-color: $code-bg-color;
   border-radius: 6px;
-  background-color: #f6f8fa;
-}
-pre.highlight {
-  padding: 16px;
-  margin: 0;
-  border-radius: 6px;
-  background-color: #f6f8fa;
+
+  pre {
+    margin: 0;
+    padding: 16px;
+  }
 }
