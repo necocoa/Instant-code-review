@@ -5,3 +5,14 @@
 
 @import "bootstrap/scss/bootstrap";
 @import "rouge";
+
+div.highlight {
+  border-radius: 6px;
+  background-color: #f6f8fa;
+}
+pre.highlight {
+  padding: 16px;
+  margin: 0;
+  border-radius: 6px;
+  background-color: #f6f8fa;
+}

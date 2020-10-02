@@ -25,7 +25,9 @@ class PostsController < ApplicationController
   # GET /posts/:id/edit
   def show
     @post = Post.find(params[:id])
-    @post_review = current_user.post_reviews.new if user_signed_in?
+    @has_current_post = @post.user == current_user
+    @post_reviews = @post.post_reviews.eager_load(:user).order(created_at: :desc)
+    @post_review = current_user.post_reviews.new if user_signed_in? && !@has_current_post
   end
 
   # DELETE /posts/:id
