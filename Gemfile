@@ -21,7 +21,6 @@ gem 'font-awesome-sass'
 # Devise
 gem 'devise'
 gem 'devise-i18n'
-gem 'devise-bootstrap-views'
 
 # Markdown, syntax
 gem 'redcarpet'

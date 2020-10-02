@@ -90,7 +90,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-bootstrap-views (1.1.0)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     diff-lcs (1.4.4)
@@ -348,7 +347,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
-  devise-bootstrap-views
   devise-i18n
   factory_bot_rails
   font-awesome-sass

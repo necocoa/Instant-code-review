@@ -1,7 +1,5 @@
-#post_title
-  .jumbotron.jumbotron-fluid
-    .container
-      h1 = @post.title
+#post_title.mb-3
+  h1 = @post.title
 
 #post_content
   .mb-5
@@ -14,11 +12,11 @@
 
 #post_review
   h3.mb-3 = "レビュー #{@post_reviews.length}件"
-  .mb-3.py-4.border-top.border-bottom
+  .mb-3.border-top.border-bottom
     ul.list-group.list-group-flush
       - @post_reviews.each do |post_review|
         li.list-group-item
-          . = markdown_to_html(post_review.body)
+          .my-3 = markdown_to_html(post_review.body)
           .d-flex.justify-content-end
             - if post_review.user == current_user
               .mr-3
@@ -33,14 +31,7 @@
   #post_review_form
     .pb-3.mb-2
       = form_with model: [@post, @post_review], local: true do |f|
-        / TODO: DRYにしたい
-        - if @post_review.errors.any?
-          #error_explanation
-            h2 レビューが保存されませんでした
-            ul
-              - @post_review.errors.full_messages.each do |message|
-                li = message
-
+        = render 'shared/form_errors', resource: @post_review
         .form-group
           = f.label :body
           = f.text_area :body, class: 'form-control', required: true, placeholder: "レビュー内容を入力してください\n※Markdown記法が利用できます"
