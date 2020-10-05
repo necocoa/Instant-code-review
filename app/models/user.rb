@@ -24,7 +24,12 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :post_reviews, dependent: :destroy
+  has_many :post_review_likes, dependent: :destroy
 
   validates :name, length: { in: 1..30 }, allow_blank: true
   validates :profile, length: { in: 1..1000 }, allow_blank: true
+
+  def already_post_review_liked?(post_review)
+    post_review_likes.exists?(post_review_id: post_review.id)
+  end
 end

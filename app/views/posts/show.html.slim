@@ -18,6 +18,15 @@
         li.list-group-item
           .my-3 = markdown_to_html(post_review.body)
           .d-flex.justify-content-end
+            - if post_review.user != current_user
+              - if current_user.already_post_review_liked?(post_review)
+                .mr-3
+                  = link_to [@post, post_review, :post_review_likes], method: :delete, class: 'text-muted' do
+                    i.fas.fa-heart
+              - else
+                .mr-3
+                  = link_to [@post, post_review, :post_review_likes], method: :post, class: 'text-muted' do
+                    i.far.fa-heart
             - if post_review.user == current_user
               .mr-3
                 = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do
