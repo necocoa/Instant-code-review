@@ -3,11 +3,51 @@
     {
       "warning_type": "Unscoped Find",
       "warning_code": 82,
+      "fingerprint": "4569f11169cace3f66fdee82921215bcba75242ef75e751ede07262d08e7ded4",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `Post#find`",
+      "file": "app/controllers/post_review_likes_controller.rb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "Post.find(params[:post_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PostReviewLikesController",
+        "method": "destroy"
+      },
+      "user_input": "params[:post_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "58268eb539a4f2ccb597147a5973fb4bdb02d214d72d21438e4fe1b6cbfc915a",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `PostReview#find`",
+      "file": "app/controllers/post_review_likes_controller.rb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "PostReview.find(params[:post_review_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PostReviewLikesController",
+        "method": "destroy"
+      },
+      "user_input": "params[:post_review_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
       "fingerprint": "872e52755f78f69184c14215ab69bde909f70873ea3560241c26d6a2a771b516",
       "check_name": "UnscopedFind",
       "message": "Unscoped call to `Post#find`",
       "file": "app/controllers/post_reviews_controller.rb",
-      "line": 5,
+      "line": 14,
       "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
       "code": "Post.find(params[:post_id])",
       "render_path": null,
@@ -17,6 +57,46 @@
         "method": "create"
       },
       "user_input": "params[:post_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "8f8c4b8a378297b31cd8a2ae8fbc78d1c8317a85d631235d2f59e00b344a694e",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `Post#find`",
+      "file": "app/controllers/post_review_likes_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "Post.find(params[:post_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PostReviewLikesController",
+        "method": "create"
+      },
+      "user_input": "params[:post_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "a59b9774e5e26812d4fdac8b8afe8b0442b4c1edc848d9c3932f9edcb85b41cf",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `PostReview#find`",
+      "file": "app/controllers/post_review_likes_controller.rb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "PostReview.find(params[:post_review_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PostReviewLikesController",
+        "method": "create"
+      },
+      "user_input": "params[:post_review_id]",
       "confidence": "Weak",
       "note": ""
     },
@@ -41,6 +121,6 @@
       "note": ""
     }
   ],
-  "updated": "2020-10-01 13:36:14 +0900",
+  "updated": "2020-10-05 17:26:26 +0900",
   "brakeman_version": "4.9.1"
 }
