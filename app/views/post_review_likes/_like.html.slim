@@ -1,0 +1,8 @@
+- if post_review.user != current_user
+  .mr-3
+    - if current_user.already_post_review_liked?(post_review)
+      = link_to [@post, post_review, :post_review_likes], class: 'text-muted', method: :delete, remote: true
+        i.fas.fa-heart
+    - else
+      = link_to [@post, post_review, :post_review_likes], class: 'text-muted', method: :post, remote: true
+        i.far.fa-heart

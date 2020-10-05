@@ -15,3 +15,4 @@ require("@rails/activestorage").start();
 // const imagePath = (name) => images(name, true)
 
 require("bootstrap/dist/js/bootstrap");
+window.$ = $;
