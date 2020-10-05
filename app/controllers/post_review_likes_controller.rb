@@ -1,7 +1,7 @@
 class PostReviewLikesController < ApplicationController
   # POST /posts/:post_id/post_reviews/:post_review_id/post_review_likes
   def create
-    current_user.post_review_likes.create(post_review_id: params[:post_review_id])
+    current_user.post_review_likes.create!(post_review_id: params[:post_review_id])
     # TODO: 非同期にする
     redirect_back fallback_location: post_path(params[:post_id]), notice: 'いいね!'
   end

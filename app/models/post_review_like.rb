@@ -23,5 +23,6 @@ class PostReviewLike < ApplicationRecord
   belongs_to :user
   belongs_to :post_review
 
+  validates :user, uniqueness: { scope: :post_review, message: 'は既にいいねしています' }
   # TODO: validates 自分はいいね出来ない
 end
