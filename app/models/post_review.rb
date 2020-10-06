@@ -26,4 +26,10 @@ class PostReview < ApplicationRecord
   has_many :likes, class_name: 'PostReviewLike', dependent: :destroy
 
   validates :body, presence: true, length: { in: 10..10000 }
+
+  scope :order_by_number_of_likes, -> {
+    left_joins(:likes)
+      .group('post_reviews.id')
+      .order('count(post_review_likes.id) DESC, post_reviews.created_at ASC')
+  }
 end
