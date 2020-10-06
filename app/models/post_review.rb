@@ -23,5 +23,7 @@ class PostReview < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
+  has_many :likes, class_name: 'PostReviewLike', dependent: :destroy
+
   validates :body, presence: true, length: { in: 10..10000 }
 end

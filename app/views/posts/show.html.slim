@@ -18,6 +18,8 @@
         li.list-group-item
           .my-3 = markdown_to_html(post_review.body)
           .d-flex.justify-content-end
+            div id="post_review_like_#{post_review.id}"
+              = render '/post_review_likes/like', post_review: post_review
             - if post_review.user == current_user
               .mr-3
                 = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do

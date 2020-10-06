@@ -6,13 +6,13 @@ class PostReviewsController < ApplicationController
 
   # POST /posts/:post_id/post_reviews
   def create
-    @post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.new(post_review_params)
 
     if @post_review.save
-      redirect_to @post
+      redirect_to post_path(params[:post_id])
     else
-      @post_reviews = @post.post_reviews.eager_load(:user).order(created_at: :desc)
+      @post = Post.find(params[:post_id])
+      @post_reviews = @post.reviews.eager_load(:user).order(created_at: :desc)
       @has_current_post = @post.user == current_user
       render 'posts/show'
     end
