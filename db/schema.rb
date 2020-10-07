@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_013832) do
+ActiveRecord::Schema.define(version: 2020_10_07_045022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_review_comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_review_id", null: false
+    t.text "body", default: "", null: false
+    t.index ["post_review_id"], name: "index_post_review_comments_on_post_review_id"
+    t.index ["user_id"], name: "index_post_review_comments_on_user_id"
+  end
 
   create_table "post_review_likes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -59,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_013832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "post_review_comments", "post_reviews"
+  add_foreign_key "post_review_comments", "users"
   add_foreign_key "post_review_likes", "post_reviews"
   add_foreign_key "post_review_likes", "users"
   add_foreign_key "post_reviews", "posts"

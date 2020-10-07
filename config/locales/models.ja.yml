@@ -6,6 +6,7 @@ ja:
       post: 投稿
       post_review: コードレビュー
       post_review_like: いいね
+      post_review_comment: コメント
     attributes:
       post:
         title: タイトル
@@ -15,6 +16,10 @@ ja:
       post_review_like:
         user: あなた
         post_review: レビュー
+      post_review_comment:
+        user: あなた
+        post_review: レビュー
+        body: コメント
   attributes:
     created_at: 作成日
     updated_at: 更新日
