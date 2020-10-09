@@ -29,20 +29,19 @@
             .mr-3 = "投稿 #{l(post_review.created_at, format: :long)}"
             . = post_review.user.name
           .ml-5.pt-3.pl-5.border-top
-            .
-              - post_review.comments.each do |comment|
-                .mb-2
-                  .mb-1.d-flex.small
-                    - if comment.user == post_review.user
-                      .pr-2: i.fas.fa-user-tie
-                    - elsif comment.user == @post.user
-                      .pr-2: i.fas.fa-user
-                    .pr-2.font-weight-bold = comment.user.name
-                    .pr-2 = l(post_review.created_at, format: :long)
-                    - if comment.user == current_user
-                      = link_to [@post, post_review, comment], method: :delete, class: 'text-muted', data: { confirm: 'コメントを削除しますか？' }
-                        i.fas.fa-trash
-                  . = comment.body
+            - post_review.comments.each do |comment|
+              .mb-2
+                .mb-1.d-flex.small
+                  - if comment.user == post_review.user
+                    .pr-2: i.fas.fa-user-tie
+                  - elsif comment.user == @post.user
+                    .pr-2: i.fas.fa-user
+                  .pr-2.font-weight-bold = comment.user.name
+                  .pr-2 = l(post_review.created_at, format: :long)
+                  - if comment.user == current_user
+                    = link_to [@post, post_review, comment], method: :delete, class: 'text-muted', data: { confirm: 'コメントを削除しますか？' }
+                      i.fas.fa-trash
+                . = comment.body
             - if user_signed_in?
               . = form_with model: [@post, post_review, @post_review_comments], local: true do |f|
                 - if post_review == @post_review_comments.post_review
