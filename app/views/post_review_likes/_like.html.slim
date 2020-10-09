@@ -2,7 +2,7 @@
   .mr-2
     = post_review.likes.length
   .
-    - if post_review.user != current_user
+    - if user_signed_in? && post_review.user != current_user
       - if current_user.already_post_review_liked?(post_review)
         = link_to [@post, post_review, :post_review_likes], class: 'text-muted', method: :delete, remote: true
           i.fas.fa-heart
