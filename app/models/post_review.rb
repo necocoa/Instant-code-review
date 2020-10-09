@@ -23,7 +23,7 @@ class PostReview < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-  has_many :coments, class_name: 'PostReviewComment', dependent: :destroy
+  has_many :comments, class_name: 'PostReviewComment', dependent: :destroy
   has_many :likes, class_name: 'PostReviewLike', dependent: :destroy
 
   validates :body, presence: true, length: { in: 10..10000 }

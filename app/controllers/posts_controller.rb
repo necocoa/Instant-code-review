@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   # GET /posts/:id/edit
   def show
     @post = Post.find(params[:id])
-    @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes)
+    @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes, comments: :user)
     @has_current_post = @post.user == current_user
     @post_review = current_user.post_reviews.new if user_signed_in? && !@has_current_post
     @post_review_comments = current_user.post_review_comments.new if user_signed_in? && !@has_current_post

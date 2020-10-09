@@ -12,7 +12,7 @@ class PostReviewCommentsController < ApplicationController
       redirect_to post_path(params[:post_id])
     else
       @post = Post.find(params[:post_id])
-      @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes)
+      @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes, comments: :user)
       @has_current_post = @post.user == current_user
       @post_review = current_user.post_reviews.new
       render 'posts/show'
