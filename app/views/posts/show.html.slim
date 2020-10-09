@@ -4,34 +4,48 @@
 #post_content
   .mb-5
     .pb-3 投稿者: #{@post.user.name}
-
     .p-2 = markdown_to_html(@post.body)
 
     - if @has_current_post
       = link_to '削除', @post, method: :delete, class: 'btn btn-danger', data: { confirm: '投稿を削除しますか？' }
 
 #post_review
-  h3.mb-3 = "レビュー #{@post_reviews.length}件"
+  h3.mb-3
+    | レビュー
+    span.text-danger =<> @post_reviews.length
+    | 件
   .mb-3.border-top.border-bottom
     ul.list-group.list-group-flush
       - @post_reviews.each do |post_review|
         li.list-group-item
           .my-3 = markdown_to_html(post_review.body)
-          .my-3.d-flex.justify-content-end
-            div id="post_review_like_#{post_review.id}"
+          .my-3.d-flex.justify-content-end.small
+            . id="post_review_like_#{post_review.id}"
               = render '/post_review_likes/like', post_review: post_review
             - if post_review.user == current_user
               .mr-3
                 = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do
                   i.fas.fa-trash
-            .mr-3
-              small = "投稿 #{l(post_review.created_at, format: :long)}"
+            .mr-3 = "投稿 #{l(post_review.created_at, format: :long)}"
+            . = post_review.user.name
+          .ml-5.pt-3.pl-5.border-top
             .
-              small = post_review.user.name
-          .d-flex.justify-content-end
-            .w-75.pt-3.pl-5.border-top
-              = form_with model: [@post, post_review, @post_review_comments], local: true do |f|
-                - if post_review.id == @post_review_comments.post_review_id
+              - post_review.comments.each do |comment|
+                .mb-2
+                  .mb-1.d-flex.small
+                    - if comment.user == post_review.user
+                      .pr-2: i.fas.fa-user-tie
+                    - elsif comment.user == @post.user
+                      .pr-2: i.fas.fa-user
+                    .pr-2.font-weight-bold = comment.user.name
+                    .pr-2 = l(post_review.created_at, format: :long)
+                    - if comment.user == current_user
+                      = link_to [@post, post_review, comment], method: :delete, class: 'text-muted', data: { confirm: 'コメントを削除しますか？' }
+                        i.fas.fa-trash
+                  . = comment.body
+            - if user_signed_in?
+              . = form_with model: [@post, post_review, @post_review_comments], local: true do |f|
+                - if post_review == @post_review_comments.post_review
                   = render 'shared/form_errors', resource: @post_review_comments
                 .form-group
                   = f.text_area :body, class: 'form-control', required: true
