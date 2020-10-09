@@ -13,7 +13,6 @@ class PostReviewsController < ApplicationController
     else
       @post = Post.find(params[:post_id])
       @post_reviews = @post.reviews.eager_load(:user).order(created_at: :desc)
-      @has_current_post = @post.user == current_user
       render 'posts/show'
     end
   end

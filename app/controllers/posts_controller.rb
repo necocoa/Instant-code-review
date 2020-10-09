@@ -22,12 +22,14 @@ class PostsController < ApplicationController
     @post = current_user.posts.new
   end
 
-  # GET /posts/:id/edit
+  # GET /posts/:id
   def show
     @post = Post.find(params[:id])
-    @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes)
-    @has_current_post = @post.user == current_user
-    @post_review = current_user.post_reviews.new if user_signed_in? && !@has_current_post
+    @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes, comments: :user)
+    return unless user_signed_in?
+
+    @post_review = current_user.post_reviews.new if @post.user != current_user
+    @post_review_comments = current_user.post_review_comments.new
   end
 
   # DELETE /posts/:id
