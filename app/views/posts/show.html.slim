@@ -6,7 +6,7 @@
     .pb-3 投稿者: #{@post.user.name}
     .p-2 = markdown_to_html(@post.body)
 
-    - if @has_current_post
+    - if @post.user == current_user
       = link_to '削除', @post, method: :delete, class: 'btn btn-danger', data: { confirm: '投稿を削除しますか？' }
 
 #post_review
@@ -52,8 +52,7 @@
                 .form-group.d-flex.justify-content-end
                   = f.submit 'コメントする', class: 'btn btn-primary'
 
-
-- if user_signed_in? && !@has_current_post
+- if user_signed_in? && @post.user != current_user
   #post_review_form
     .pb-3.mb-2
       = form_with model: [@post, @post_review], local: true do |f|
