@@ -26,8 +26,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_reviews = @post.reviews.order_by_number_of_likes.preload(:user, :likes, comments: :user)
-    @post_review = current_user.post_reviews.new if user_signed_in? && @post.user != current_user
-    @post_review_comments = current_user.post_review_comments.new if user_signed_in?
+    return unless user_signed_in?
+
+    @post_review = current_user.post_reviews.new if @post.user != current_user
+    @post_review_comments = current_user.post_review_comments.new
   end
 
   # DELETE /posts/:id
