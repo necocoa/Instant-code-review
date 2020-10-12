@@ -16,7 +16,7 @@ h1
   .form-group
     = f.label :call_to_action_message
     = f.text_area :call_to_action_message, class: 'form-control'
-    small.form-text.text-muted 120文字以内 改行は空白に変わります
+    small.form-text.text-muted 100文字以内 改行はされません
   .form-group
     = f.label :current_password, class: 'required'
     = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control', required: true
