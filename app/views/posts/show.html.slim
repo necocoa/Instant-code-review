@@ -19,15 +19,23 @@
       - @post_reviews.each do |post_review|
         li.list-group-item
           .my-3 = markdown_to_html(post_review.body)
-          .my-3.d-flex.justify-content-end.small
-            . id="post_review_like_#{post_review.id}"
-              = render '/post_review_likes/like', post_review: post_review
-            - if post_review.user == current_user
-              .mr-3
-                = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do
-                  i.fas.fa-trash
-            .mr-3 = "投稿 #{l(post_review.created_at, format: :long)}"
-            . = post_review.user.name
+          .small
+            - if post_review.user.reviewer_url.present?
+              .my-3.d-flex.justify-content-end
+                .cta-box-mx.p-4.bg-light.rounded-lg
+                  .mb-3 = post_review.user.call_to_action_message
+                  .d-flex.justify-content-end
+                    = link_to post_review.user.reviewer_url, target: :_blank, rel: :noopener
+                      button.btn.btn-info.btn-sm レビューを受ける
+            .my-3.d-flex.justify-content-end
+              . id="post_review_like_#{post_review.id}"
+                = render '/post_review_likes/like', post_review: post_review
+              - if post_review.user == current_user
+                .mr-3
+                  = link_to [@post, post_review], method: :delete, class: 'text-muted', data: { confirm: 'レビューを削除しますか？' } do
+                    i.fas.fa-trash
+              .mr-3 = "投稿 #{l(post_review.created_at, format: :long)}"
+              .font-weight-bold = post_review.user.name
           - if user_signed_in? || post_review.comments.exists?
             .ml-5.pt-3.pl-5.border-top
               - post_review.comments.each do |comment|
