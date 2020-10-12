@@ -20,6 +20,8 @@ entity users {
   encrypted_password: string
   name: string
   profile: text
+  reviewer_url: string
+  call_to_action_message: string
   remember_created_at: datetime
   reset_password_sent_at: datetime
   reset_password_token: string

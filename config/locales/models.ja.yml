@@ -8,6 +8,11 @@ ja:
       post_review_like: いいね
       post_review_comment: コメント
     attributes:
+      user:
+        name: 名前
+        profile: プロフィール
+        reviewer_url: レビュワーのURL
+        call_to_action_message: 誘導文
       post:
         title: タイトル
         body: 投稿内容
