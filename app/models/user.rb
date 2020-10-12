@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :post_review_likes, dependent: :destroy
   has_many :post_review_comments, dependent: :destroy
 
+  validates :name, length: { in: 2..30 }, allow_blank: true
+  validates :profile, length: { maximum: 1000 }, allow_blank: true
   validates :reviewer_url, length: { maximum: 255 },
                            format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/,
                            allow_blank: true

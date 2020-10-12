@@ -3,6 +3,9 @@ h1
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render 'shared/form_errors', resource: resource
   .form-group
+    = f.label :name, class: 'required'
+    = f.text_field :name, class: 'form-control', required: true
+    small.form-text.text-muted 2〜30文字以内
   .form-group
     = f.label :email, class: 'required'
     = f.email_field :email, autocomplete: 'email', class: 'form-control', required: true
@@ -15,7 +18,7 @@ h1
     = f.text_area :call_to_action_message, class: 'form-control'
     small.form-text.text-muted 120文字以内 改行は空白に変わります
   .form-group
-    = f.label :current_password
+    = f.label :current_password, class: 'required'
     = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control', required: true
     small.form-text.text-muted
       = t('.we_need_your_current_password_to_confirm_your_changes')
