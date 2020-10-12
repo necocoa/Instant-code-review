@@ -8,13 +8,27 @@
 @import "font-awesome";
 @import "rouge";
 
-$code-bg-color: #f6f8fa;
+label {
+  &.required {
+    &::after {
+      content: "*";
+    }
+  }
+}
 
-.highlight {
-  background-color: $code-bg-color;
-  border-radius: 6px;
+// rouge scss
+$pre-bg-color-for-github: #f6f8fa;
 
-  pre {
+div {
+  &.highlight {
+    border-radius: 6px;
+  }
+}
+
+pre {
+  &.highlight {
+    background-color: $pre-bg-color-for-github;
+    border-radius: 6px;
     margin: 0;
     padding: 16px;
   }
