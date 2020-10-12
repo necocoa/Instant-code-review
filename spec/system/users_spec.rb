@@ -48,13 +48,11 @@ RSpec.describe 'Users', type: :system do
         it '更新できる' do
           click_link 'nav_edit_user'
           fill_in 'user[name]', with: 'ユーザー名を変更'
-          fill_in 'user[profile]', with: 'プロフィールを変更'
           fill_in 'user[email]', with: 'change@example.com'
           fill_in 'user[current_password]', with: user.password
           click_button '更新'
           user.reload
           expect(user.name).to eq 'ユーザー名を変更'
-          expect(user.profile).to eq 'プロフィールを変更'
           expect(user.email).to eq 'change@example.com'
         end
       end
