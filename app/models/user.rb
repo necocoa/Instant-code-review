@@ -34,7 +34,7 @@ class User < ApplicationRecord
   validates :reviewer_url, length: { maximum: 255 },
                            format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/,
                            allow_blank: true
-  validates :call_to_action_message, length: { maximum: 120 }, allow_blank: true
+  validates :call_to_action_message, length: { maximum: 100 }, allow_blank: true
 
   def already_post_review_liked?(post_review)
     post_review_likes.exists?(post_review_id: post_review.id)
