@@ -29,6 +29,9 @@ gem 'rouge'
 # Paginator
 gem 'kaminari'
 
+# Statically page
+gem 'high_voltage'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'bullet'
