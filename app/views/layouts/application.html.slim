@@ -7,7 +7,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = render 'shared/analytics' if Rails.env.development?
+    = render 'shared/analytics' if Rails.env.production?
   body
     = render 'shared/header'
     = render 'shared/flash'
