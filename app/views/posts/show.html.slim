@@ -25,8 +25,15 @@
                 .cta-box-mx.p-4.bg-light.rounded-lg
                   .mb-3 = post_review.user.call_to_action_message
                   .d-flex.justify-content-end
-                    = link_to post_review.user.reviewer_url, target: '_blank', rel: 'noopener noreferrer'
-                      button.btn.btn-info.btn-sm レビューを受ける
+                    - if Rails.env.production?
+                      = link_to 'レビューを受ける', post_review.user.reviewer_url,
+                                               target: '_blank', rel: 'noopener noreferrer nofollow',
+                                               class: 'btn btn-info btn-sm', id: 'review_cta_btn',
+                                               onclick: "gtag('event', 'click', {'event_category': 'link', 'event_label': 'レビューCTAクリック', 'value': '1'})"
+                    - else
+                      = link_to 'レビューを受ける', post_review.user.reviewer_url,
+                                               target: '_blank', rel: 'noopener noreferrer nofollow',
+                                               class: 'btn btn-info btn-sm', id: 'review_cta_btn'
             .my-3.d-flex.justify-content-end
               . id="post_review_like_#{post_review.id}"
                 = render '/post_review_likes/like', post_review: post_review
