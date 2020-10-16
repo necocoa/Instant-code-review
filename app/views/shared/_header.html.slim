@@ -8,13 +8,28 @@ header
 
         .collapse.navbar-collapse.justify-content-end#navbar_nav_alt_markup
           ul.navbar-nav
-            li.nav-item = link_to '投稿する', new_post_path, class: 'nav-link btn  btn-sm btn-outline-secondary mr-2'
+            li.nav-item
+              = link_to new_post_path, class: 'nav-link btn btn-sm btn-outline-secondary font-weight-bold mr-2'
+                i.far.fa-edit.pr-1
+                | 投稿する
+            .mx-1.border-left.border-secondary
             - if user_signed_in?
-              li.nav-item.dropdown
-                a.nav-link.dropdown-toggle href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" = current_user.name
+              li.nav-item.dropdown.d-flex
+                a.nav-link.dropdown-toggle.font-weight-bold.small.m-auto href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" = current_user.name
                 .dropdown-menu aria-labelledby="navbarDropdown"
-                  = link_to 'プロフィール変更', edit_user_registration_path, class: 'dropdown-item', id: 'nav_edit_user'
-                  = link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', id: 'nav_logout'
+                  = link_to edit_user_registration_path, class: 'dropdown-item small text-muted', id: 'nav_edit_user'
+                    i.fas.fa-user-edit.pr-1
+                    | プロフィール変更
+                  = link_to destroy_user_session_path, class: 'dropdown-item small text-muted', id: 'nav_logout'
+                    i.fas.fa-sign-out-alt.pr-1
+                    | ログアウト
             - else
-              li.nav-item = link_to '新規登録', new_user_registration_path, class: 'nav-link', id: 'nav_sign_up'
-              li.nav-item = link_to 'ログイン', new_user_session_path, class: 'nav-link', id: 'nav_login'
+              li.nav-item.small.m-auto
+                = link_to new_user_session_path, class: 'nav-link', id: 'nav_login'
+                  i.fas.fa-sign-in-alt.pr-1
+                  | ログイン
+              li.nav-item.small.m-auto
+                = link_to new_user_registration_path, class: 'nav-link', id: 'nav_sign_up'
+                  i.fas.fa-user-plus.pr-1
+                  | 新規登録
+
