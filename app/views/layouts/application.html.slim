@@ -10,7 +10,7 @@ html
     = render 'shared/analytics' if Rails.env.production?
   body.bg-light
     = render 'shared/header'
-    main.container
+    main.container-lg
       = render 'shared/flash'
       .my-4.p-5.bg-white.rounded-lg.shadow-sm
         = yield
