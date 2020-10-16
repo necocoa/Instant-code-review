@@ -1,8 +1,8 @@
-footer
-  .bg-light.pt-3.pb-2
-    .navbar.navbar-light.justify-content-center
+footer.bg-dark
+  nav.navbar.navbar-dark.navbar-expand-lg
+    .container.pt-3.pb-2.justify-content-center
       a.navbar-brand href="/" Instant code review
-    nav.nav.justify-content-center.small.mb-2
-      li.nav-item = link_to '利用規約', page_path('terms'), class: 'nav-link text-muted'
-      li.nav-item = link_to 'プライバシーポリシー', page_path('privacy'), class: 'nav-link text-muted'
-    small.d-flex.justify-content-center.text-muted © 2020 Instant code review
+      ul.navbar-nav.small
+        li.nav-item = link_to '利用規約', page_path('terms'), class: 'nav-link'
+        li.nav-item = link_to 'プライバシーポリシー', page_path('privacy'), class: 'nav-link'
+  .d-flex.justify-content-center.small.text-muted.pb-2 © 2020 Instant code review
