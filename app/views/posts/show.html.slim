@@ -28,12 +28,12 @@
                     - if Rails.env.production?
                       = link_to 'レビューを受ける', post_review.user.reviewer_url,
                                                target: '_blank', rel: 'noopener noreferrer nofollow',
-                                               class: 'btn btn-info btn-sm', id: 'review_cta_btn',
+                                               class: 'btn btn-outline-info btn-sm', id: 'review_cta_btn',
                                                onclick: "gtag('event', 'click', {'event_category': 'link', 'event_label': 'レビューCTAクリック', 'value': '1'})"
                     - else
                       = link_to 'レビューを受ける', post_review.user.reviewer_url,
                                                target: '_blank', rel: 'noopener noreferrer nofollow',
-                                               class: 'btn btn-info btn-sm', id: 'review_cta_btn'
+                                               class: 'btn btn-outline-info btn-sm', id: 'review_cta_btn'
             .my-3.d-flex.justify-content-end
               . id="post_review_like_#{post_review.id}"
                 = render '/post_review_likes/like', post_review: post_review
@@ -65,7 +65,7 @@
                   .form-group
                     = f.text_area :body, class: 'form-control', required: true
                   .form-group.d-flex.justify-content-end
-                    = f.submit 'コメントする', class: 'btn btn-primary'
+                    = f.submit 'コメントする', class: 'btn btn-outline-secondary'
 
 - if user_signed_in? && @post.user != current_user
   #post_review_form
@@ -74,6 +74,6 @@
         = render 'shared/form_errors', resource: @post_review
         .form-group
           = f.label :body
-          = f.text_area :body, class: 'form-control', required: true, placeholder: "レビュー内容を入力してください\n※Markdown記法が利用できます"
+          = f.text_area :body, rows: 8, class: 'form-control', required: true, placeholder: "レビュー内容を入力してください\n※Markdown記法が利用できます"
         .form-group
           = f.submit 'レビューする', class: 'btn btn-primary'
