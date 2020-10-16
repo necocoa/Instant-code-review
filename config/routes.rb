@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'privacy', to: 'high_voltage/pages#show', id: 'privacy'
+  get 'terms', to: 'high_voltage/pages#show', id: 'terms'
+
   root 'home#index'
-  # get '*id', to: 'high_voltage/pages#show'
-  get '*unmatched_route', to: 'application#route_not_found'
+
+  unless Rails.env.development?
+    get '*unmatched_route', to: 'application#route_not_found'
+  end
 end

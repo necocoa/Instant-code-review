@@ -1,20 +1,22 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
-  rescue_from Exception do |exception|
-    log_exception(exception)
-    render_500
-  end
-  rescue_from StandardError do |exception|
-    log_exception(exception)
-    render_500
-  end
-  # rescue_from Forbidden, with: :render_403
-  # rescue_from IpAddressRejected, with: :render_403
-  rescue_from ActionController::UnknownFormat, with: :render_404
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    log_exception(exception)
-    render_404
+  unless Rails.env.development?
+    rescue_from StandardError do |exception|
+      log_exception(exception)
+      render_500
+    end
+    rescue_from Exception do |exception|
+      log_exception(exception)
+      render_500
+    end
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+      log_exception(exception)
+      render_404
+    end
+    rescue_from ActionController::UnknownFormat, with: :render_404
+    class Forbidden < ActionController::ActionControllerError; end
+    rescue_from Forbidden, with: :render_403
   end
 
   def not_found
