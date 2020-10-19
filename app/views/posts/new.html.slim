@@ -1,3 +1,8 @@
+script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js'
+script src='https://cdn.jsdelivr.net/npm/marked/marked.min.js'
+script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/highlight.min.js'
+link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/styles/github.min.css"
+
 h1 新規投稿
 
 = form_with model: @post, local: true do |f|
@@ -6,7 +11,30 @@ h1 新規投稿
     = f.label :title
     = f.text_field :title, class: 'form-control', required: true
   .form-group
-    = f.label :body
-    = f.text_area :body, rows: 14, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます"
+    #editor
+      = f.label :body
+      = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます", 'v-model': 'preview_post_body', debounce: 50
+      .md-preview.my-4.p-4.rounded v-html='preview_post_body | marked'
+
   .form-group
     = f.submit '投稿する', class: 'btn btn-primary'
+
+javascript:
+  document.addEventListener('turbolinks:load', () => {
+    new Vue({
+      el: '#editor',
+      data: {
+        preview_post_body: "#{j @post.body}",
+      },
+      filters: {
+        marked: marked,
+      },
+      created: () => {
+        marked.setOptions({
+          highlight: (code, lang) => {
+            return hljs.highlightAuto(code, [lang]).value
+          }
+        });
+      },
+    });
+  })
