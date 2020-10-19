@@ -13,8 +13,8 @@ h1 新規投稿
   .form-group
     #editor
       = f.label :body
-      = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます", 'v-model': 'input', debounce: 50
-      .md-preview.my-4.p-4.rounded v-html='input | marked'
+      = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます", 'v-model': 'preview_post_body', debounce: 50
+      .md-preview.my-4.p-4.rounded v-html='preview_post_body | marked'
 
   .form-group
     = f.submit '投稿する', class: 'btn btn-primary'
@@ -24,7 +24,7 @@ javascript:
     new Vue({
       el: '#editor',
       data: {
-        input: "#{j @post.body}",
+        preview_post_body: "#{j @post.body}",
       },
       filters: {
         marked: marked,
