@@ -57,6 +57,22 @@ label {
   }
 }
 
+.navbar-dark .navbar-nav .nav-link-light {
+  color: $gray-400;
+}
+
+.cta-box-mx {
+  max-width: 50%;
+
+  @include media-breakpoint-down(md) {
+    max-width: 75%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    max-width: 100%;
+  }
+}
+
 // rouge scss
 $pre-bg-color-for-github: #f6f8fa;
 
@@ -82,18 +98,13 @@ p code {
   padding: .2em .4em;
 }
 
-.navbar-dark .navbar-nav .nav-link-light {
-  color: $gray-400;
-}
+.md-preview {
+  border: 1px dashed $gray-500;
 
-.cta-box-mx {
-  max-width: 50%;
-
-  @include media-breakpoint-down(md) {
-    max-width: 75%;
-  }
-
-  @include media-breakpoint-down(sm) {
-    max-width: 100%;
+  pre {
+    background-color: $pre-bg-color-for-github;
+    border-radius: 6px;
+    margin: 0;
+    padding: 16px;
   }
 }

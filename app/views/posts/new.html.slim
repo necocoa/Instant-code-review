@@ -1,3 +1,6 @@
+script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'
+script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'
+
 h1 新規投稿
 
 = form_with model: @post, local: true do |f|
@@ -6,7 +9,23 @@ h1 新規投稿
     = f.label :title
     = f.text_field :title, class: 'form-control', required: true
   .form-group
-    = f.label :body
-    = f.text_area :body, rows: 14, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます"
+    #editor
+      = f.label :body
+      = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます", 'v-model': 'input', debounce: 50
+      .md-preview.my-4.p-4.rounded v-html='input | marked'
+
   .form-group
     = f.submit '投稿する', class: 'btn btn-primary'
+
+javascript:
+  window.onload = function() {
+    new Vue({
+      el: '#editor',
+      data: {
+        input: "#{j @post.body}",
+      },
+      filters: {
+        marked: marked,
+      },
+    });
+  };
