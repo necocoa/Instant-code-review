@@ -18,7 +18,7 @@ h1 新規投稿
     = f.submit '投稿する', class: 'btn btn-primary'
 
 javascript:
-  window.onload = function() {
+  document.addEventListener('turbolinks:load', function() {
     new Vue({
       el: '#editor',
       data: {
@@ -28,4 +28,4 @@ javascript:
         marked: marked,
       },
     });
-  };
+  })
