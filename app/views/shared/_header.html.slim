@@ -2,14 +2,14 @@ header
   .fixed-top
     nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.shadow-sm
       .container-lg
-        a.navbar-brand href="/" Instant code review
+        a.navbar-brand#header_logo href="/" Instant code review
         button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbar_nav_alt_markup" aria-controls="navbar_nav_alt_markup" aria-expanded="false" aria-label="Toggle navigation"
           span.navbar-toggler-icon
 
         .collapse.navbar-collapse.justify-content-end#navbar_nav_alt_markup
           ul.navbar-nav
             li.nav-item
-              = link_to new_post_path, class: 'nav-link btn btn-sm btn-outline-secondary font-weight-bold mr-2 nav-link-light'
+              = link_to new_post_path, class: 'nav-link btn btn-sm btn-outline-secondary font-weight-bold mr-2 nav-link-light', id: 'header_new_post'
                 i.far.fa-edit.pr-1
                 | 投稿する
             .mx-1.border-left.border-secondary
@@ -32,4 +32,3 @@ header
                 = link_to new_user_registration_path, class: 'nav-link', id: 'nav_sign_up'
                   i.fas.fa-user-plus.pr-1
                   | 新規登録
-

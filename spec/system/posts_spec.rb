@@ -5,7 +5,7 @@ RSpec.describe 'Posts', type: :system do
     describe 'index' do
       it '表示される' do
         visit root_path
-        click_link 'nav_posts'
+        click_link 'header_logo'
         expect(page).to have_content '投稿一覧'
       end
     end
@@ -14,7 +14,7 @@ RSpec.describe 'Posts', type: :system do
       let!(:post) { create(:post) }
       it '表示される' do
         visit root_path
-        click_link 'nav_posts'
+        click_link 'header_logo'
         click_link post.title
         expect(page).to have_content post.title
         expect(page).to have_content post.body
@@ -39,8 +39,7 @@ RSpec.describe 'Posts', type: :system do
     describe 'new' do
       let(:build_post) { build(:post) }
       it '投稿できる' do
-        click_link 'nav_posts'
-        click_link '新規投稿'
+        click_link 'header_new_post'
         fill_in 'post[title]', with: build_post.title
         fill_in 'post[body]', with: build_post.body
         expect { click_button :commit }.to change { Post.count }.by(1)
