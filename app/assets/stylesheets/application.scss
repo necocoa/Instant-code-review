@@ -8,10 +8,15 @@
 @import "font-awesome";
 @import "rouge";
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 1.4rem 0 1.5rem;
-  font-weight: bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-feature-settings: "palt";
+  font-weight: bold;
+  margin: 1.4rem 0 1.5rem;
 }
 
 h1 {
@@ -20,9 +25,9 @@ h1 {
 }
 
 h2 {
+  border-bottom: 1.5px solid $gray-300;
   font-size: 1.65rem;
-  border-bottom: 1.5px solid #ddd;
-  padding-bottom: 0.3em;
+  padding-bottom: .3em;
 }
 
 h3 {
@@ -71,14 +76,14 @@ pre {
 }
 
 p code {
-  color: #222;
-  padding: .2em .4em;
-  background-color: rgba(27,31,35,.05);
+  background-color: $pre-bg-color-for-github;
   border-radius: 3px;
+  color: $gray-900;
+  padding: .2em .4em;
 }
 
 .navbar-dark .navbar-nav .nav-link-light {
-  color: rgba(255, 255, 255, 0.7);
+  color: $gray-400;
 }
 
 .cta-box-mx {
