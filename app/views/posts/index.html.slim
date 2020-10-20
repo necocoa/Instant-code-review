@@ -10,7 +10,7 @@ h1 投稿一覧
           .mt-2.ml-3 = link_to post.title, post, class: 'posts-title'
         .mr-4.d-flex.justify-content-end
           .mr-3
-            small = post.user.name
+            small.font-weight-bold = post.user.name
           .
             small = "#{time_ago_in_words(post.created_at)}前"
 
