@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: '投稿しました。'
     else
-      render new_post_path
+      render :new
     end
   end
 
