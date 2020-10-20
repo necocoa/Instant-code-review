@@ -80,7 +80,6 @@ label {
 }
 
 .review-count-box {
-  font-size: 1rem;
   font-weight: bold;
   text-align: center;
 
@@ -97,6 +96,14 @@ label {
 // rouge scss
 $pre-bg-color-for-github: #f6f8fa;
 
+code {
+  background-color: $pre-bg-color-for-github;
+  border-radius: 3px;
+  color: $gray-900;
+  margin: 0 .2em;
+  padding: .2em .4em;
+}
+
 div {
   &.highlight {
     border-radius: 6px;
@@ -110,13 +117,6 @@ pre {
     margin: 0;
     padding: 16px;
   }
-}
-
-p code {
-  background-color: $pre-bg-color-for-github;
-  border-radius: 3px;
-  color: $gray-900;
-  padding: .2em .4em;
 }
 
 .md-preview {
