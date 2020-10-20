@@ -3,7 +3,7 @@
 
 #post_content
   .mb-5
-    .pb-3 投稿者: #{@post.user.name}
+    .ml-3.pb-3.small.font-weight-bold = @post.user.name
     .py-4.px-2 = markdown_to_html(@post.body)
 
     - if @post.user == current_user
