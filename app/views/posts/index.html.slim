@@ -3,9 +3,12 @@ h1 投稿一覧
   ul.list-group.list-group-flush
     - @posts.each do |post|
       li.list-group-item
-        .
-          = link_to post.title, post, class: 'h5'
-        .d-flex.justify-content-end
+        .d-flex
+          dl.mb-0.mr-2.review-count-box.bg-light.rounded-lg.p-2
+            dt レビュー
+            dd.m-0 = post.reviews.length
+          .mt-2.ml-3 = link_to post.title, post, class: 'posts-title'
+        .mr-4.d-flex.justify-content-end
           .mr-3
             small = post.user.name
           .

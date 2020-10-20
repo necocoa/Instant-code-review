@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   # GET /
   def index
-    @posts = Post.includes(:user).recent.page(params[:page])
+    @posts = Post.page(params[:page]).includes(:user, :reviews).recent
     render 'posts/index'
   end
 end

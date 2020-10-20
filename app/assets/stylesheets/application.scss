@@ -3,6 +3,10 @@
  *= require_self
  */
 
+$theme-colors: (
+  "primary": #117ec6
+);
+
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -73,6 +77,21 @@ label {
   @include media-breakpoint-down(sm) {
     max-width: 100%;
   }
+}
+
+.review-count-box {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+
+  dt {
+    font-size: .6rem;
+  }
+}
+
+.posts-title {
+  font-size: 1.15rem;
+  font-weight: bold;
 }
 
 // rouge scss
