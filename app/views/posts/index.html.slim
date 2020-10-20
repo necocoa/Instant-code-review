@@ -1,5 +1,5 @@
 h1 投稿一覧
-.pt-3
+.mb-3.pt-3
   ul.list-group.list-group-flush
     - @posts.each do |post|
       li.list-group-item
@@ -11,6 +11,5 @@ h1 投稿一覧
           .
             small = "#{time_ago_in_words(post.created_at)}前"
 
-.
+.d-flex.justify-content-center
   = paginate @posts
-  = page_entries_info @posts
