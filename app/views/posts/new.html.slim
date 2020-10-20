@@ -1,40 +1,41 @@
-script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js'
-script src='https://cdn.jsdelivr.net/npm/marked/marked.min.js'
-script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/highlight.min.js'
-link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/styles/github.min.css"
-
 h1 新規投稿
 
 = form_with model: @post, local: true do |f|
   = render 'shared/form_errors', resource: @post
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control', required: true
-  .form-group
-    #editor
+  #editor
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control', required: true, 'v-model': 'input_title'
+    .form-group
       = f.label :body
-      = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます", 'v-model': 'preview_post_body', debounce: 50
-      .md-preview.my-4.p-4.rounded v-html='preview_post_body | marked'
-
+      = f.text_area :body, rows: 20, class: 'form-control', required: true, 'v-model': 'input_body',
+                            placeholder: "投稿内容を入力してください\n※Markdown記法が利用できます"
+      .md-preview.my-4.px-4.py-2.rounded
+        .h1 v-text='marked_title'
+        .md-2 v-html='marked_body'
   .form-group
     = f.submit '投稿する', class: 'btn btn-primary'
 
 javascript:
-  document.addEventListener('turbolinks:load', () => {
-    new Vue({
-      el: '#editor',
-      data: {
-        preview_post_body: "#{j @post.body}",
+  new Vue({
+    el: '#editor',
+    data: {
+      input_title: "#{@post.title}",
+      input_body: "#{@post.body}",
+    },
+    computed: {
+      marked_title: function () {
+        return this.input_title;
       },
-      filters: {
-        marked: marked,
+      marked_body: function () {
+        return marked(this.input_body);
       },
-      created: () => {
-        marked.setOptions({
-          highlight: (code, lang) => {
-            return hljs.highlightAuto(code, [lang]).value
-          }
-        });
-      },
-    });
-  })
+    },
+    created: function () {
+      marked.setOptions({
+        highlight: (code, lang) => {
+          return hljs.highlightAuto(code, [lang]).value;
+        },
+      });
+    },
+  });
