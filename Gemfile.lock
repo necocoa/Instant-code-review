@@ -387,8 +387,8 @@ DEPENDENCIES
   slim_lint
   spring
   spring-watcher-listen
-  turbolinks
   sqreen
+  turbolinks
   tzinfo-data
   web-console
   webdrivers
