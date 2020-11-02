@@ -1,48 +1,48 @@
 require:
-  - rubocop-rails
   - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   NewCops: enable
   Exclude:
-    - "db/schema.rb"
-    - "vendor/**/*"
-    - "config/**/*"
-    - "node_modules/**/*"
     - "bin/**/*"
+    - "config/**/*"
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "vendor/**/*"
 
 ######## Style ########
+# redirect_to xxx and return のイディオムを維持したい
+Style/AndOr:
+  EnforcedStyle: conditionals
+
 # 日本語のコメントを許可する
 Style/AsciiComments:
+  Enabled: false
+
+# Class名の::を許可する default: nested
+Style/ClassAndModuleChildren:
   Enabled: false
 
 # ドキュメントの無い public class を許可する
 Style/Documentation:
   Enabled: false
 
-# Class名の::を許可する
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-# redirect_to xxx and return のイディオムを維持したい
-Style/AndOr:
-  EnforcedStyle: conditionals
-
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# 条件式の方を意識させたい場合には後置の if/unless を使わない方が分かりやすい
-Style/IfUnlessModifier:
-  Enabled: false
+# Lambda処理をすべてアロー演算子で表記する（デフォルトは1行: アロー演算子, 複数行: Lambda）
+Style/Lambda:
+  EnforcedStyle: literal
 
 # 1_000_000 と区切り文字が 2 個以上必要になる場合のみ _ 区切りを必須にする
 Style/NumericLiterals:
   MinDigits: 7
 
-# Lambda処理をすべてアロー演算子で表記する（デフォルトは1行: アロー演算子, 複数行: Lambda）
-Style/Lambda:
-  EnforcedStyle: literal
+# 条件式の方を意識させたい場合には後置の if/unless を使わない方が分かりやすい
+Style/IfUnlessModifier:
+  Enabled: false
 
 ######## Metrics ########
 # メソッドのサイズ
@@ -74,16 +74,15 @@ Layout/LineLength:
   IgnoredPatterns: ['\A#'] # コメントは除外
   Exclude:
     - "db/fixtures/**/*" # seedファイルは除外
-    - "spec/**/*" # specファイルは除外
     - "db/migrate/**/*" # migrateファイルは除外
+    - "spec/**/*" # specファイルは除外
 
 # 自動生成ファイル除外
 Metrics/BlockLength:
   Exclude:
-    - "spec/**/*"
     - "lib/tasks/auto_annotate_models.rake"
+    - "spec/**/*"
     - "Guardfile"
-    - "config/routes.rb"
 Style/BlockComments:
   Exclude:
     - "spec/spec_helper.rb"
